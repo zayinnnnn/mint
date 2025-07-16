@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十年爱情纪念 - 致最爱的你</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            color: #5a3e36;
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M30,50 Q45,30 60,50 T90,50 Q75,70 60,50 T30,50' fill='none' stroke='%23e8a2a2' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E");
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(175, 90, 90, 0.15);
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 200, 200, 0.5);
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #e8a2a2, #c86b85);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 0 10px 30px;
+            border-bottom: 1px solid rgba(200, 107, 133, 0.2);
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            color: #c86b85;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #9e6a6a;
+            font-weight: 300;
+            margin-top: 15px;
+        }
+        
+        .content {
+            padding: 20px 10px;
+            position: relative;
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+        
+        .love-letter {
+            padding: 0 10px;
+        }
+        
+        .love-letter p {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 40px;
+            text-align: justify;
+        }
+        
+        .love-letter p::before {
+            content: "❤";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #e8a2a2;
+            font-size: 1.8rem;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        .signature {
+            text-align: right;
+            margin-top: 60px;
+            padding: 20px 40px 0;
+            border-top: 1px dashed rgba(200, 107, 133, 0.3);
+        }
+        
+        .name {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2.8rem;
+            color: #c86b85;
+            line-height: 1.2;
+        }
+        
+        .date {
+            font-size: 1.1rem;
+            color: #9e6a6a;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #9e6a6a;
+            font-size: 1rem;
+            width: 100%;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        .falling-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .heart-shape {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(232, 162, 162, 0.7);
+            animation: float 8s linear infinite;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .title {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .love-letter p {
+                padding-left: 35px;
+                font-size: 1.1rem;
+            }
+            
+            .name {
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .love-letter p {
+                padding-left: 30px;
+                font-size: 1rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .date {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="falling-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">十年爱情纪念</h1>
+            <p class="subtitle">从青涩到成熟，我们的十年旅程</p>
+        </div>
+        
+        <div class="content">
+            <div class="love-letter">
+                <p>哈哈，好神奇，就这么过了十年！谢谢宝宝，辛苦你了这么包容我～最近一年，我们爆发了许多矛盾冲突，正如你说的，是我们battle最多次的一年，以至于你对我不再那么信任了，确实是我没做好，但很感激你愿意跟我沟通，好彩，我们还能坐下来好好聊，即便每次都大哭一场。你说你不知道离开我以后会变得怎么样，我也是的，真的很难想象没有你的生活，我们一定是亲人了。</p>
+                
+                <p>也许是我们谈太久，过去很长一段时间我都陷入习惯性忽略当中，总觉得你就在这，不管我怎么样你都会在这，因此缺少了沟通以及感情维系。天真以为只要周末出来吃个饭，到处逛逛便足够，美名其曰平平淡淡才是真，但日子不能总是这么平淡，总需要一些热烈点缀生活。其实你一直很热烈，只是我最近才发现。翻看初中、高中你的空间动态，我是真的很喜欢你的文字，你的情绪总能不加掩饰地表达出来，真的，这是我初中为什么喜欢你的原因，我始终相信我们的性格互补，也坚信我们就是灵魂伴侣。但一直以来吧，我都没能完全承接好、包容好你的情绪，让你受了很多委屈，无数次自我消解却鲜少诘问我，谢谢你这么包容我，愿意为我们的感情付出这么多。好像你一直在栽树，从高一我自闭不敢去买东西，到你微信发了一大堆东西我只回一两句，我有很多毛病在你的规训下，变成普世价值中还不错的那一类，不得不说是你的功劳。</p>
+                
+                <p>刨除不记事的3、4岁，跟你谈的这十年几乎占据了我人生的一半，谈恋爱不只是找个搭子吃吃喝喝，更是成为彼此生活的支柱，我无比确信你就是我生活不可分割的一部分。两年前你是支撑我走出焦虑的理由，现在你是我规划未来人生的核心，很幸运从2015年7月开始，我的人生就一直有你，谢谢你偷偷喜欢了我一年，嘿嘿～感谢缘分，没让我们错过。</p>
+                
+                <p>你离开汕头的几个月，思念格外强烈，也是让我猛然意识到，没有你我的生活很难熬。一个人去看海、看日落，或者参加团建，说是丰富生活，其实都是在对抗孤独。只有跟你一起才是最自在、最松弛的，光是看着你就觉得好幸福了～我知道你有顾虑，反复提起结婚也不是催促你，只是想让你知道，你就是那个唯一。你愿意提前回汕头我真的很开心，短暂地分离让我更能看清自己的心吧，我需要你，需要你，需要你陪伴我。不用那么急的，也不用做得很好，不希望你背负很大的压力，慢慢来就好了，我会一直等你。</p>
+                
+                <p>好长的十年，同事会问我为什么能谈这么久，很大部分归功于你的热烈，视频时你看着我笑，我知道眼角的笑意是溢出来的爱。诚然，感情里面始终会存在平淡期，但最近看你过去发的一些内容，会有感触，是要用热烈对抗平淡的。</p>
+                
+                <p>我好像会说谈太久有点不知道怎么谈恋爱了，跟你处得更像是亲人。所以步入新的十年，我希望跟你重新谈一次恋爱，希望可以弥补过去我做得不好、不够成熟的点，好好沟通，更好地接纳、消解你的情绪，不开心一定要跟我讲，我们一定一定要走到最后！</p>
+            </div>
+            
+            <div class="signature">
+                <div class="name">永远爱你的陈泽彦</div>
+                <div class="date">2025年7月16日</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>❤ 纪念我们共同的十年 (2015-2025) ❤</p>
+    </div>
+
+    <script>
+        // 创建飘落的心形效果
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 30;
+            const characters = ['❤', '💖', '💗', '💓', '💞'];
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-shape');
+                heart.innerHTML = characters[Math.floor(Math.random() * characters.length)];
+                
+                // 随机位置
+                const left = Math.random() * 100;
+                heart.style.left = `${left}%`;
+                
+                // 随机大小
+                const size = 15 + Math.random() * 25;
+                heart.style.fontSize = `${size}px`;
+                
+                // 随机动画延迟和持续时间
+                const delay = Math.random() * 5;
+                const duration = 5 + Math.random() * 10;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                
+                // 随机初始位置
+                heart.style.top = `-${Math.random() * 100}px`;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // 页面加载完成后执行
+        window.addEventListener('load', () => {
+            createHearts();
+        });
+    </script>
+</body>
+</html>
