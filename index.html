@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十年爱情纪念</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary: #e63946;
+            --secondary: #f1faee;
+            --accent: #a8dadc;
+            --text: #1d3557;
+            --light: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23a8dadc" opacity="0.2"/></svg>');
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding: 0 1rem;
+        }
+        
+        .title {
+            font-size: 3.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--text);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+        
+        .decoration {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .heart {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .heart i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .content {
+            padding: 1rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+        
+        .love-letter {
+            padding: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        .love-letter p {
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .love-letter p::before {
+            content: "❤";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-top: 1rem;
+            text-align: right;
+            padding-right: 2rem;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(230, 57, 70, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart-shape {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(230, 57, 70, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .love-letter {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .love-letter p {
+                padding-left: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">十年爱情纪念</h1>
+            <p class="subtitle">从青涩到成熟，我们的十年旅程</p>
+            <div class="decoration">
+                <div class="heart"><i class="fas fa-heart"></i></div>
+                <div class="heart" style="animation-delay: 0.5s"><i class="fas fa-heart"></i></div>
+                <div class="heart" style="animation-delay: 1s"><i class="fas fa-heart"></i></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="love-letter">
+                <p>哈哈，好神奇，就这么过了十年！谢谢宝宝，辛苦你了这么包容我～最近一年，我们爆发了许多矛盾冲突，正如你说的，是我们battle最多次的一年，以至于你对我不再那么信任了，确实是我没做好，但很感激你愿意跟我沟通，好彩，我们还能坐下来好好聊，即便每次都大哭一场。你说你不知道离开我以后会变得怎么样，我也是的，真的很难想象没有你的生活，我们一定是亲人了。</p>
+                
+                <p>也许是我们谈太久，过去很长一段时间我都陷入习惯性忽略当中，总觉得你就在这，不管我怎么样你都会在这，因此缺少了沟通以及感情维系。天真以为只要周末出来吃个饭，到处逛逛便足够，美名其曰平平淡淡才是真，但日子不能总是这么平淡，总需要一些热烈点缀生活。其实你一直很热烈，只是我最近才发现。翻看初中、高中你的空间动态，我是真的很喜欢你的文字，你的情绪总能不加掩饰地表达出来，真的，这是我初中为什么喜欢你的原因，我始终相信我们的性格互补，也坚信我们就是灵魂伴侣。但一直以来吧，我都没能完全承接好、包容好你的情绪，让你受了很多委屈，无数次自我消解却鲜少诘问我，谢谢你这么包容我，愿意为我们的感情付出这么多。好像你一直在栽树，从高一我自闭不敢去买东西，到你微信发了一大堆东西我只回一两句，我有很多毛病在你的规训下，变成普世价值中还不错的那一类，不得不说是你的功劳。</p>
+                
+                <p>刨除不记事的3、4岁，跟你谈的这十年几乎占据了我人生的一半，谈恋爱不只是找个搭子吃吃喝喝，更是成为彼此生活的支柱，我无比确信你就是我生活不可分割的一部分。两年前你是支撑我走出焦虑的理由，现在你是我规划未来人生的核心，很幸运从2015年7月开始，我的人生就一直有你，谢谢你偷偷喜欢了我一年，嘿嘿～感谢缘分，没让我们错过。</p>
+                
+                <p>你离开汕头的几个月，思念格外强烈，也是让我猛然意识到，没有你我的生活很难熬。一个人去看海、看日落，或者参加团建，说是丰富生活，其实都是在对抗孤独。只有跟你一起才是最自在、最松弛的，光是看着你就觉得好幸福了～我知道你有顾虑，反复提起结婚也不是催促你，只是想让你知道，你就是那个唯一。你愿意提前回汕头我真的很开心，短暂地分离让我更能看清自己的心吧，我需要你，需要你，需要你陪伴我。不用那么急的，也不用做得很好，不希望你背负很大的压力，慢慢来就好了，我会一直等你。</p>
+                
+                <p>好长的十年，同事会问我为什么能谈这么久，很大部分归功于你的热烈，视频时你看着我笑，我知道眼角的笑意是溢出来的爱。诚然，感情里面始终会存在平淡期，但最近看你过去发的一些内容，会有感触，是要用热烈对抗平淡的。</p>
+                
+                <p>我好像会说谈太久有点不知道怎么谈恋爱了，跟你处得更像是亲人。所以步入新的十年，我希望跟你重新谈一次恋爱，希望可以弥补过去我做得不好、不够成熟的点，好好沟通，更好地接纳、消解你的情绪，不开心一定要跟我讲，我们一定一定要走到最后！</p>
+            </div>
+        </div>
+        
+        <div class="signature">永远爱你的</div>
+    </div>
+    
+    <div class="footer">
+        <p>❤ 纪念我们共同的十年 (2015-2025) ❤</p>
+        <p>珍惜当下，期待未来</p>
+    </div>
+
+    <script>
+        // 创建浮动爱心效果
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-shape');
+                heart.innerHTML = '❤';
+                
+                // 随机位置
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                heart.style.left = `${left}%`;
+                heart.style.top = `${top}%`;
+                
+                // 随机大小
+                const size = 0.5 + Math.random() * 2;
+                heart.style.fontSize = `${size}rem`;
+                
+                // 随机动画延迟
+                const delay = Math.random() * 5;
+                heart.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // 页面加载完成后执行
+        window.addEventListener('load', () => {
+            createHearts();
+            
+            // 添加滚动效果
+            document.querySelector('.content').addEventListener('scroll', function() {
+                const scrollPercentage = this.scrollTop / (this.scrollHeight - this.clientHeight);
+                document.body.style.backgroundPosition = `0% ${scrollPercentage * 100}%`;
+            });
+        });
+    </script>
+</body>
+</html>
